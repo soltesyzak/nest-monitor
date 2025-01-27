@@ -5,8 +5,9 @@ RUN --mount=type=bind,source=requirements.txt,target=/tmp/requirements.txt \
 
 WORKDIR /root
 COPY ./src /root/src
+ENV PYTHON_ENV=production
 EXPOSE 8000
-CMD ["fastapi", "run", "src", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["fastapi", "run", "src/main.py", "--host", "0.0.0.0", "--port", "8000"]
 
 # docker build --no-cache -t nest-monitor-build . 
 # docker run -d -p 8000:8000 --name nest-monitor-app nest-monitor-build
